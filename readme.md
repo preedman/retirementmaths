@@ -12,10 +12,15 @@ The core logic is contained in the `Drawdown` class, which implements the follow
     *   *Formula:* $W = \frac{c}{r - i} \left( 1 - e^{-(r - i)t} \right)$
 *   **Initial Withdrawal ($c$):** Calculates the maximum annual withdrawal allowed for a specific timeframe.
     *   *Formula:* $c = \frac{W(r - i)}{1 - e^{-(r - i)t}}$
+    *   **Yaari Optimal Spending:** Calculates spending based on Menahem Yaari's lifecycle model, incorporating mortality risk (hazard rate) and time preference.
+        *   *Formula:* $c = W(\rho + \lambda)$
+    *   **Gompertz-Makeham Mortality:** Calculates the age-dependent hazard rate ($\lambda$) used in the Yaari model.
+        *   *Formula:* $\mu(x) = \alpha + \beta e^{\eta x}$
+    *   **Regional Mortality Support:** Includes preset parameters for US and Australian mortality data (ALT) to refine optimal spending calculations based on localized longevity.
 
-*Key: $r$ = Real rate of return, $i$ = Inflation, $W$ = Starting balance, $c$ = Initial withdrawal.*
+    *Key: $r$ = Real rate of return, $i$ = Inflation, $W$ = Starting balance, $c$ = Initial withdrawal, $\rho$ = Subjective discount rate, $\lambda$ = Hazard (mortality) rate, $x$ = Age.*
 
-## Tech Stack
+    ## Tech Stack
 
 *   **Java 17**
 *   **Spring Boot 3.5.8**

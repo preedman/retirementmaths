@@ -89,5 +89,46 @@ public class DrawdownTest {
         assertThat(result).isEqualTo(10000.0);
     }
 
+    @Test
+    void shouldCalculateYaariSpending() {
+        // $1,000,000 balance
+        // Mortality risk (lambda) = 0.04
+        // Subjective discount rate (rho) = 0.02
+        // Result: 1,000,000 * (0.04 + 0.02) = 60,000
+        double result = drawdown.calculateYaariSpending(0.05, 0.02, 1000000, 0.04, 0.02);
+        assertThat(result).isEqualTo(60000.0);
+    }
 
+    @Test
+    void shouldCalculateIncreasedSpendingWithAgeUsingGompertz() {
+        double balance = 1000000;
+        double rho = 0.02;
+
+        // Spending at age 65
+        double spending65 = drawdown.calculateYaariSpendingWithGompertz(balance, rho, 65);
+        // Spending at age 85 (hazard rate will be much higher)
+        double spending85 = drawdown.calculateYaariSpendingWithGompertz(balance, rho, 85);
+
+        System.out.println("Spending at 65: " + spending65);
+        System.out.println("Spending at 85: " + spending85);
+
+        assertThat(spending85).isGreaterThan(spending65);
+    }
+
+    @Test
+    void shouldCompareUSAndAustralianSpending() {
+        double balance = 1000000;
+        double rho = 0.02;
+        double age = 65;
+
+        double spendingUS = drawdown.calculateYaariSpendingWithGompertz(balance, rho, age);
+        double spendingAU = drawdown.calculateYaariSpendingAustralia(balance, rho, age);
+
+        System.out.println("At age 65:");
+        System.out.println("US Optimal Spending: " + spendingUS);
+        System.out.println("AU Optimal Spending: " + spendingAU);
+
+        // Australians usually have lower mortality at 65, so spending is lower/more conservative
+        assertThat(spendingAU).isLessThan(spendingUS);
+    }
 }
