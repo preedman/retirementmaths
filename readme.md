@@ -20,7 +20,16 @@ The core logic is contained in the `Drawdown` class, which implements the follow
 
     *Key: $r$ = Real rate of return, $i$ = Inflation, $W$ = Starting balance, $c$ = Initial withdrawal, $\rho$ = Subjective discount rate, $\lambda$ = Hazard (mortality) rate, $x$ = Age.*
 
-    ## Tech Stack
+## Documentation & Examples
+
+For detailed mathematical walkthroughs and worked examples of the core functions, please refer to the following guides:
+
+*   [Calculating Drawdown Time](src/documentation/CalculateTimeForDrawdown.md)
+*   [Calculating Required Starting Balance](src/documentation/CalculateStartingBalance.md)
+*   [Calculating Initial Withdrawal](src/documentation/CalculateInitalWithdrawal.md)
+*   [Yaari Optimal Spending (Australian Mortality)](src/documentation/CalculateYaariSpendingAustralianMortality.md)
+
+## Tech Stack
 
 *   **Java 17**
 *   **Spring Boot 3.5.8**
