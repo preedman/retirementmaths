@@ -29,6 +29,16 @@ For detailed mathematical walkthroughs and worked examples of the core functions
 *   [Calculating Initial Withdrawal](src/documentation/CalculateInitalWithdrawal.md)
 *   [Yaari Optimal Spending (Australian Mortality)](src/documentation/CalculateYaariSpendingAustralianMortality.md)
 
+## References
+
+The mathematical logic and formulas implemented in this project are based on the concepts found in:
+*   [The 7 Most Important Equations for Your Retirement](https://www.wiley.com/en-us/The+7+Most+Important+Equations+for+Your+Retirement%3A+The+Fascinating+People+and+Ideas+Behind+Planning+Your+Retirement+Income-p-9781118291535) by Moshe A. Milevsky.
+*   [Gompertz–Makeham law of mortality](https://en.wikipedia.org/wiki/Gompertz%E2%80%93Makeham_law_of_mortality) (Wikipedia).
+*   [The force of mortality at the finest level](https://pmc.ncbi.nlm.nih.gov/articles/PMC11090256/) (NIH/PMC).
+*   [Australian Life Tables 2020–22](https://aga.gov.au/publications/life-tables/australian-life-tables-2020-22) (Australian Government Actuary).
+*   [Menahem Yaari](https://en.wikipedia.org/wiki/Menahem_Yaari) (Wikipedia).
+*   [The Fisher Equation](https://corporatefinanceinstitute.com/resources/economics/fisher-equation/) (Corporate Finance Institute).
+
 ## Tech Stack
 
 *   **Java 17**
