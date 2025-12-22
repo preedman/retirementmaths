@@ -1,5 +1,6 @@
 package com.reedmanit.retirementmaths.data;
 
+import com.reedmanit.retirementmaths.service.Drawdown;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

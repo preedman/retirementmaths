@@ -1,5 +1,8 @@
-package com.reedmanit.retirementmaths.data;
+package com.reedmanit.retirementmaths.service;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class Drawdown {
 
     /**

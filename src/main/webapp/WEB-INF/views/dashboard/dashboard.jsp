@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,8 +34,38 @@
     <!-- Tab Content -->
     <div class="tab-content p-4 border border-top-0" id="dashboardTabsContent">
         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
-            <h4>Overview</h4>
-            <p>Summary of your retirement status goes here.</p>
+            <h4>Drawdown Time Calculator</h4>
+            <p>Calculate how long your retirement savings will last.</p>
+
+            <form:form action="/calculateDrawdown" method="post" modelAttribute="drawdownParams" class="mt-3">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Starting Balance ($)</label>
+                        <form:input path="startingBalance" type="number" step="0.01" class="form-control" required="required" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Initial Annual Withdrawal ($)</label>
+                        <form:input path="initialWithdrawal" type="number" step="0.01" class="form-control" required="required" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Real Rate of Return (e.g., 0.05)</label>
+                        <form:input path="realRateOfReturn" type="number" step="0.0001" class="form-control" required="required" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Inflation (e.g., 0.02)</label>
+                        <form:input path="inflation" type="number" step="0.0001" class="form-control" required="required" />
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Calculate Time</button>
+                    </div>
+                </div>
+            </form:form>
+
+            <c:if test="${not empty drawdownResult}">
+                <div class="mt-4 alert alert-info">
+                    <strong>Estimated Time until Funds Deplete:</strong> ${drawdownResult}
+                </div>
+            </c:if>
         </div>
         <div class="tab-pane fade" id="investments" role="tabpanel" aria-labelledby="investments-tab">
             <h4>Investments</h4>
