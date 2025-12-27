@@ -13,27 +13,27 @@
 <body>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Retirement Planning Dashboard</h2>
+    <h2 class="mb-4">Retirement Maths</h2>
 
     <!-- Nav Tabs -->
     <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">Overview</button>
+            <button class="nav-link ${empty activeTab || activeTab == 'overview' ? 'active' : ''}" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">Overview</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="investments-tab" data-bs-toggle="tab" data-bs-target="#investments" type="button" role="tab" aria-controls="investments" aria-selected="false">Investments</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="projections-tab" data-bs-toggle="tab" data-bs-target="#projections" type="button" role="tab" aria-controls="projections" aria-selected="false">Projections</button>
-        </li>
-        <li class="nav-item" role="presentation">
+                <button class="nav-link ${activeTab == 'starting-balance' ? 'active' : ''}" id="starting-balance-tab" data-bs-toggle="tab" data-bs-target="#starting-balance" type="button" role="tab">Starting Balance</button>
+            </li>
+            <li class="nav-item" role="presentation">
             <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Settings</button>
         </li>
     </ul>
 
     <!-- Tab Content -->
     <div class="tab-content p-4 border border-top-0" id="dashboardTabsContent">
-        <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+        <div class="tab-pane fade ${empty activeTab || activeTab == 'overview' ? 'show active' : ''}" id="overview" role="tabpanel">
             <h4>Drawdown Time Calculator</h4>
             <p>Calculate how long your retirement savings will last.</p>
 
@@ -67,7 +67,41 @@
                 </div>
             </c:if>
         </div>
-        <div class="tab-pane fade" id="investments" role="tabpanel" aria-labelledby="investments-tab">
+        <div class="tab-pane fade ${activeTab == 'starting-balance' ? 'show active' : ''}" id="starting-balance" role="tabpanel">
+                <h4>Starting Balance Calculator</h4>
+                <p>Calculate the initial balance required to sustain your desired withdrawals.</p>
+
+                <form:form action="/calculateStartingBalance" method="post" modelAttribute="startingBalanceParams" class="mt-3">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Initial Annual Withdrawal ($)</label>
+                            <form:input path="initialWithdrawal" type="number" step="0.01" class="form-control" required="required" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Desired Time (Years)</label>
+                            <form:input path="desiredTimeInYears" type="number" step="1" class="form-control" required="required" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Real Rate of Return (e.g., 0.05)</label>
+                            <form:input path="realRateOfReturn" type="number" step="0.0001" class="form-control" required="required" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Inflation (e.g., 0.02)</label>
+                            <form:input path="inflation" type="number" step="0.0001" class="form-control" required="required" />
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Calculate Starting Balance</button>
+                        </div>
+                    </div>
+                </form:form>
+
+                <c:if test="${not empty startingBalanceResult}">
+                    <div class="mt-4 alert alert-success">
+                        <strong>Required Starting Balance:</strong> $${startingBalanceResult}
+                    </div>
+                </c:if>
+            </div>
+            <div class="tab-pane fade" id="projections" role="tabpanel" aria-labelledby="projections-tab">
             <h4>Investments</h4>
             <p>Details regarding your investment portfolio.</p>
         </div>
