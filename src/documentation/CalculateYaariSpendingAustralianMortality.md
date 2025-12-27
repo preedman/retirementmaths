@@ -9,7 +9,7 @@ An Australian retiree wants to determine their optimal annual spending based on 
 * **Starting Balance ($W$):** $1,000,000
 * **Current Age ($x$):** 65
 * **Subjective Discount Rate ($\rho$):** 2% (0.02) - *This represents the person's preference for spending now vs. later.
-* See [Subjective Discount Rate Explained](src/documentation/SubjectDiscountRateDefined.md)
+* See [Subjective Discount Rate Explained](SubjectDiscountRateDefined.md)
 
 ## Understanding Gompertz-Makeham
 
