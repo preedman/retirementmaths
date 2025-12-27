@@ -28,6 +28,7 @@ For detailed mathematical walkthroughs and worked examples of the core functions
 *   [Calculating Required Starting Balance](src/documentation/CalculateStartingBalance.md)
 *   [Calculating Initial Withdrawal](src/documentation/CalculateInitalWithdrawal.md)
 *   [Yaari Optimal Spending (Australian Mortality)](src/documentation/CalculateYaariSpendingAustralianMortality.md)
+*   [Subjective Discount Rate Defined](src/documentation/SubjectDiscountRateDefined.md)
 
 ## References
 
