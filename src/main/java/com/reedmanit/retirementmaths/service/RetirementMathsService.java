@@ -1,6 +1,7 @@
 package com.reedmanit.retirementmaths.service;
 
 import com.reedmanit.retirementmaths.data.DrawDownParameters;
+import com.reedmanit.retirementmaths.data.OptimalSpendingInAustraliaParameters;
 import com.reedmanit.retirementmaths.data.StartingBalanceParameters;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +33,14 @@ public class RetirementMathsService {
 
         return drawdown.calculateRequiredStartingBalance(parameters.getRealRateOfReturn(), parameters.getInflation(), parameters.getDesiredTimeInYears(), parameters.getInitialWithdrawal());
 
+    }
+
+    public double calculateOptimalSpendingInAustralia(OptimalSpendingInAustraliaParameters parameters) {
+
+        if (parameters == null) {
+            throw new IllegalArgumentException("Parameters cannot be null");
+        }
+
+        return drawdown.calculateYaariSpendingAustralia(parameters.getStartingBalance(), parameters.getSubjectiveDiscountRate(), parameters.getAge());
     }
 }

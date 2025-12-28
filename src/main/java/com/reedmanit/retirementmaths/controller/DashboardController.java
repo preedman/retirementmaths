@@ -1,6 +1,7 @@
 package com.reedmanit.retirementmaths.controller;
 
 import com.reedmanit.retirementmaths.data.DrawDownParameters;
+import com.reedmanit.retirementmaths.data.OptimalSpendingInAustraliaParameters;
 import com.reedmanit.retirementmaths.data.StartingBalanceParameters;
 import com.reedmanit.retirementmaths.service.RetirementMathsService;
 import org.springframework.stereotype.Controller;
@@ -20,11 +21,23 @@ public class DashboardController {
 
 
 
+    @ModelAttribute("drawdownParams")
+    public DrawDownParameters defaultDrawDownParameters() {
+        return new DrawDownParameters(0.05, 0.02, 300000, 30000);
+    }
+
+    @ModelAttribute("startingBalanceParams")
+    public StartingBalanceParameters defaultStartingBalanceParameters() {
+        return new StartingBalanceParameters(0.05, 0.02, 25, 50000);
+    }
+
+    @ModelAttribute("optimalSpendingParams")
+    public OptimalSpendingInAustraliaParameters defaultOptimalSpendingParams() {
+        return new OptimalSpendingInAustraliaParameters(700000, 0.02, 65);
+    }
+
     @GetMapping("/dashboard")
-    public String showDashboard(Model model) {
-        // Initialize an empty parameters object for the form
-        model.addAttribute("drawdownParams", new DrawDownParameters(0.05, 0.02, 300000, 30000));
-        model.addAttribute("startingBalanceParams", new StartingBalanceParameters(0.05, 0.02, 25, 50000));
+    public String showDashboard() {
         return "dashboard/dashboard";
     }
 
@@ -40,8 +53,6 @@ public class DashboardController {
         }
 
         model.addAttribute("drawdownResult", result);
-        // Add this to prevent the IllegalStateException for the other form
-        model.addAttribute("startingBalanceParams", new StartingBalanceParameters(0.05, 0.02, 25, 50000));
         model.addAttribute("activeTab", "overview");
         return "dashboard/dashboard";
     }
@@ -50,8 +61,15 @@ public class DashboardController {
     public String calculateStartingBalance(@ModelAttribute("startingBalanceParams") StartingBalanceParameters params, Model model) {
         double result = retirementMathsService.calculateStartingBalance(params);
         model.addAttribute("startingBalanceResult", String.format("%.2f", result));
-        model.addAttribute("drawdownParams", new DrawDownParameters(0.05, 0.02, 1000000, 50000));
         model.addAttribute("activeTab", "starting-balance");
+        return "dashboard/dashboard";
+    }
+
+    @PostMapping("/calculateOptimalSpending")
+    public String calculateOptimalSpending(@ModelAttribute("optimalSpendingParams") OptimalSpendingInAustraliaParameters params, Model model) {
+        double result = retirementMathsService.calculateOptimalSpendingInAustralia(params);
+        model.addAttribute("optimalSpendingResult", String.format("%.2f", result));
+        model.addAttribute("activeTab", "spending");
         return "dashboard/dashboard";
     }
 }
