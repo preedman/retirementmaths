@@ -36,6 +36,11 @@ public class DashboardController {
         return new OptimalSpendingInAustraliaParameters(700000, 0.02, 65);
     }
 
+    @GetMapping("/")
+    public String show() {
+        return "dashboard/dashboard";
+    }
+
     @GetMapping("/dashboard")
     public String showDashboard() {
         return "dashboard/dashboard";

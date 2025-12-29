@@ -18,7 +18,7 @@
     <!-- Nav Tabs -->
     <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link ${empty activeTab || activeTab == 'overview' ? 'active' : ''}" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">Overview</button>
+            <button class="nav-link ${empty activeTab || activeTab == 'overview' ? 'active' : ''}" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">Drawdown</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link ${empty activeTab || activeTab == 'spending' ? 'active' : ''}" id="spending-tab" data-bs-toggle="tab" data-bs-target="#spending" type="button" role="tab">Spending</button>
@@ -30,7 +30,7 @@
                 <button class="nav-link ${activeTab == 'starting-balance' ? 'active' : ''}" id="starting-balance-tab" data-bs-toggle="tab" data-bs-target="#starting-balance" type="button" role="tab">Starting Balance</button>
             </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Settings</button>
+            <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Documentation</button>
         </li>
     </ul>
 
@@ -51,7 +51,7 @@
                         <form:input path="initialWithdrawal" type="number" step="0.01" class="form-control" required="required" />
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">Real Rate of Return (e.g., 0.05)</label>
+                        <label class="form-label">Rate of Return (e.g., 0.05)</label>
                         <form:input path="realRateOfReturn" type="number" step="0.0001" class="form-control" required="required" />
                     </div>
                     <div class="col-md-6">
@@ -118,6 +118,8 @@
                     <div class="col-md-6">
                         <label class="form-label">Subjective Discount Rate (e.g., 0.02)</label>
                         <form:input path="subjectiveDiscountRate" type="number" step="0.01" class="form-control" required="required" />
+                        <br>
+                        <a href="https://github.com/preedman/retirementmaths/blob/master/src/documentation/SubjectDiscountRateDefined.md" target="_blank">What is Subjective Discount Rate?</a>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Age (Years)</label>
@@ -148,8 +150,17 @@
             <p>Future financial growth and drawdown estimates.</p>
         </div>
         <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-            <h4>Settings</h4>
-            <p>Configure your retirement parameters.</p>
+            <h4>Documentation</h4>
+            <p>Worked examples of calculations and documentation</p>
+            <a href="https://github.com/preedman/retirementmaths/blob/master/src/documentation/CalculateTimeForDrawdown.md" target="_blank">Calculate Time for Drawdown Example</a>
+            <br>
+            <a href="https://github.com/preedman/retirementmaths/blob/master/src/documentation/CalculateStartingBalance.md" target="_blank">Calculate Starting Balance Example</a>
+            <br>
+            <a href="https://github.com/preedman/retirementmaths/blob/master/src/documentation/CalculateYaariSpendingAustralianMortality.md" target="_blank">Calculate Optimal Spending in Australia Example</a>
+            <br>
+            <a href="https://github.com/preedman/retirementmaths/blob/master/src/documentation/SubjectDiscountRateDefined.md" target="_blank">What is Subjective Discount Rate?</a>
+            <br>
+
         </div>
     </div>
 </div>
