@@ -13,7 +13,13 @@
 <body>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Retirement Maths</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Retirement Maths</h2>
+        <form action="/logout" method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <button type="submit" class="btn btn-outline-danger">Logout</button>
+        </form>
+    </div>
 
     <!-- Nav Tabs -->
     <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
