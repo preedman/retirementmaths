@@ -205,6 +205,8 @@
             <br>
             <a href="https://github.com/preedman/retirementmaths/blob/master/src/documentation/SubjectDiscountRateDefined.md" target="_blank">What is Subjective Discount Rate?</a>
             <br>
+            <a href="https://github.com/preedman/retirementmaths/blob/master/src/documentation/NominalReturnDefinition.md" target="_blank">Nominal Return Definition (60/40)</a>
+            <br>
 
         </div>
     </div>

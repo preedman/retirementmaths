@@ -30,7 +30,9 @@ In addition to the deterministic formulas above, the project includes a **Monte 
 
 **Method:** A yearly **bootstrap** simulation is used. For each simulated year, the engine randomly samples a historical `(nominal_return, inflation)` pair **with replacement** from:
 
-- `src/main/resources/data/au_return_inflation.csv`
+- [`src/main/resources/data/au_return_inflation.csv`](src/main/resources/data/au_return_inflation.csv)
+
+**Nominal return definition:** See [`src/documentation/NominalReturnDefinition.md`](src/documentation/NominalReturnDefinition.md) for how the `nominal_return` series is constructed (balanced 60/40 using All Ords Accumulation + AU government bonds all maturities).
 
 **Outputs:** Probability of ruin and ending-balance percentiles (P5 / P50 / P95).
 
@@ -46,8 +48,8 @@ For detailed mathematical walkthroughs and worked examples of the core functions
 *   [Yaari Optimal Spending (Australian Mortality)](src/documentation/CalculateYaariSpendingAustralianMortality.md)
 *   [Subjective Discount Rate Defined](src/documentation/SubjectDiscountRateDefined.md)
 *   [Monte Carlo Simulation (Worked Example)](src/documentation/MonteCarloSimulationWorkedExample.md)
+*   [Nominal Return Definition (60/40)](src/documentation/NominalReturnDefinition.md)
 
-## References
 
 The mathematical logic and formulas implemented in this project are based on the concepts found in:
 *   [The 7 Most Important Equations for Your Retirement](https://www.wiley.com/en-us/The+7+Most+Important+Equations+for+Your+Retirement%3A+The+Fascinating+People+and+Ideas+Behind+Planning+Your+Retirement+Income-p-9781118291535) by Moshe A. Milevsky.

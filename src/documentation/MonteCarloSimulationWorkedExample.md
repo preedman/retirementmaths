@@ -53,15 +53,15 @@ For year (t), define:
 
 ### 3.1 Apply return and withdrawal
 
-[
-B_{t+1} = B_t cdot (1 + R_t) - W_t
-]
+\[
+B_{t+1} = B_t \cdot (1 + R_t) - W_t
+\]
 
 ### 3.2 Increase next year’s withdrawal by inflation
 
-[
-W_{t+1} = W_t cdot (1 + I_t)
-]
+\[
+W_{t+1} = W_t \cdot (1 + I_t)
+\]
 
 ### 3.3 Ruin rule
 
@@ -99,14 +99,14 @@ Now we simulate one path by sampling 3 historical (return, inflation) pairs.
 
 Start:
 
-- (B_1 = 100,000)
-- (W_1 = 5,000)
+- \(B_1 = 100,000\)
+- \(W_1 = 5,000\)
 
 Apply return and withdraw:
 
-[
-B_2 = 100,000 cdot 1.10 - 5,000 = 110,000 - 5,000 = 105,000
-]
+\[
+B_2 = 100,000 \cdot 1.10 - 5,000 = 110,000 - 5,000 = 105,000
+\]
 
 Update withdrawal using inflation:
 
@@ -120,20 +120,20 @@ W_2 = 5,000 cdot 1.02 = 5,100
 
 Start:
 
-- (B_2 = 105,000)
-- (W_2 = 5,100)
+- \(B_2 = 105,000\)
+- \(W_2 = 5,100\)
 
 Apply return and withdraw:
 
-[
-B_3 = 105,000 cdot 0.80 - 5,100 = 84,000 - 5,100 = 78,900
-]
+\[
+B_3 = 105,000 \cdot 0.80 - 5,100 = 84,000 - 5,100 = 78,900
+\]
 
 Update withdrawal using inflation:
 
-[
-W_3 = 5,100 cdot 1.05 = 5,355
-]
+\[
+W_3 = 5,100 \cdot 1.05 = 5,355
+\]
 
 ---
 
@@ -141,14 +141,14 @@ W_3 = 5,100 cdot 1.05 = 5,355
 
 Start:
 
-- (B_3 = 78,900)
-- (W_3 = 5,355)
+-\(B_3 = 78,900\)
+- \(W_3 = 5,355\)
 
 Apply return and withdraw:
 
-[
-B_4 = 78,900 cdot 1.08 - 5,355 = 85,212 - 5,355 = 79,857
-]
+\[
+B_4 = 78,900 \cdot 1.08 - 5,355 = 85,212 - 5,355 = 79,857
+\]
 
 **End of trial results:**
 
