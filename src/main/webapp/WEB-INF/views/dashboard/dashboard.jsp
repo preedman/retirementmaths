@@ -33,8 +33,11 @@
             -->
         </li>
         <li class="nav-item" role="presentation">
-                <button class="nav-link ${activeTab == 'starting-balance' ? 'active' : ''}" id="starting-balance-tab" data-bs-toggle="tab" data-bs-target="#starting-balance" type="button" role="tab">Starting Balance</button>
-            </li>
+            <button class="nav-link ${activeTab == 'starting-balance' ? 'active' : ''}" id="starting-balance-tab" data-bs-toggle="tab" data-bs-target="#starting-balance" type="button" role="tab">Starting Balance</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link ${activeTab == 'montecarlo' ? 'active' : ''}" id="montecarlo-tab" data-bs-toggle="tab" data-bs-target="#montecarlo" type="button" role="tab">Monte Carlo</button>
+        </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Documentation</button>
         </li>
@@ -76,39 +79,40 @@
                 </div>
             </c:if>
         </div>
+
         <div class="tab-pane fade ${activeTab == 'starting-balance' ? 'show active' : ''}" id="starting-balance" role="tabpanel">
-                <h4>Starting Balance Calculator</h4>
-                <p>Calculate the initial balance required to sustain your desired withdrawals.</p>
+            <h4>Starting Balance Calculator</h4>
+            <p>Calculate the initial balance required to sustain your desired withdrawals.</p>
 
-                <form:form action="/calculateStartingBalance" method="post" modelAttribute="startingBalanceParams" class="mt-3">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Initial Annual Withdrawal ($)</label>
-                            <form:input path="initialWithdrawal" type="number" step="0.01" class="form-control" required="required" />
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Desired Time (Years)</label>
-                            <form:input path="desiredTimeInYears" type="number" step="1" class="form-control" required="required" />
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Real Rate of Return (e.g., 0.05)</label>
-                            <form:input path="realRateOfReturn" type="number" step="0.0001" class="form-control" required="required" />
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Inflation (e.g., 0.02)</label>
-                            <form:input path="inflation" type="number" step="0.0001" class="form-control" required="required" />
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Calculate Starting Balance</button>
-                        </div>
+            <form:form action="/calculateStartingBalance" method="post" modelAttribute="startingBalanceParams" class="mt-3">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Initial Annual Withdrawal ($)</label>
+                        <form:input path="initialWithdrawal" type="number" step="0.01" class="form-control" required="required" />
                     </div>
-                </form:form>
+                    <div class="col-md-6">
+                        <label class="form-label">Desired Time (Years)</label>
+                        <form:input path="desiredTimeInYears" type="number" step="1" class="form-control" required="required" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Real Rate of Return (e.g., 0.05)</label>
+                        <form:input path="realRateOfReturn" type="number" step="0.0001" class="form-control" required="required" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Inflation (e.g., 0.02)</label>
+                        <form:input path="inflation" type="number" step="0.0001" class="form-control" required="required" />
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Calculate Starting Balance</button>
+                    </div>
+                </div>
+            </form:form>
 
-                <c:if test="${not empty startingBalanceResult}">
-                    <div class="mt-4 alert alert-success">
-                        <strong>Required Starting Balance:</strong> $${startingBalanceResult}
-                    </div>
-                </c:if>
+            <c:if test="${not empty startingBalanceResult}">
+                <div class="mt-4 alert alert-success">
+                    <strong>Required Starting Balance:</strong> $${startingBalanceResult}
+                </div>
+            </c:if>
         </div>
 
         <div class="tab-pane fade ${activeTab == 'spending' ? 'show active' : ''}" id="spending" role="tabpanel">
@@ -144,17 +148,52 @@
             </c:if>
         </div>
 
+        <div class="tab-pane fade ${activeTab == 'montecarlo' ? 'show active' : ''}" id="montecarlo" role="tabpanel">
+            <h4>Monte Carlo (Bootstrap AU Returns + Inflation)</h4>
+            <p>Simulate retirement drawdown using historical Australian (return, inflation) years sampled with replacement.</p>
 
-        <!--
-        <div class="tab-pane fade" id="projections" role="tabpanel" aria-labelledby="projections-tab">
-            <h4>Investments</h4>
-            <p>Details regarding your investment portfolio.</p>
+            <form:form action="/calculateMonteCarlo" method="post" modelAttribute="monteCarloParams" class="mt-3">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Starting Balance ($)</label>
+                        <form:input path="startingBalance" type="number" step="0.01" class="form-control" required="required" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Initial Annual Withdrawal ($)</label>
+                        <form:input path="initialWithdrawal" type="number" step="0.01" class="form-control" required="required" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Years</label>
+                        <form:input path="years" type="number" step="1" class="form-control" required="required" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Trials</label>
+                        <form:input path="trials" type="number" step="1" class="form-control" required="required" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Seed</label>
+                        <form:input path="seed" type="number" step="1" class="form-control" required="required" />
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Run Simulation</button>
+                    </div>
+                </div>
+            </form:form>
+
+            <c:if test="${not empty mcRuinProbability}">
+                <div class="mt-4 alert alert-info">
+                    <div><strong>Probability of Ruin:</strong> ${mcRuinProbability}</div>
+                    <div class="mt-2"><strong>Ending Balance Percentiles:</strong></div>
+                    <ul class="mb-0">
+                        <li>P5: $${mcP5}</li>
+                        <li>P50 (median): $${mcP50}</li>
+                        <li>P95: $${mcP95}</li>
+                    </ul>
+                </div>
+            </c:if>
         </div>
-        -->
-        <div class="tab-pane fade" id="projections" role="tabpanel" aria-labelledby="projections-tab">
-            <h4>Projections</h4>
-            <p>Future financial growth and drawdown estimates.</p>
-        </div>
+
         <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
             <h4>Documentation</h4>
             <p>Worked examples of calculations and documentation</p>

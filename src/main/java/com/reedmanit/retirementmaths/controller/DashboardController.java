@@ -1,8 +1,10 @@
 package com.reedmanit.retirementmaths.controller;
 
 import com.reedmanit.retirementmaths.data.DrawDownParameters;
+import com.reedmanit.retirementmaths.data.MonteCarloParameters;
 import com.reedmanit.retirementmaths.data.OptimalSpendingInAustraliaParameters;
 import com.reedmanit.retirementmaths.data.StartingBalanceParameters;
+import com.reedmanit.retirementmaths.montecarlo.MonteCarloResult;
 import com.reedmanit.retirementmaths.service.RetirementMathsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +36,11 @@ public class DashboardController {
     @ModelAttribute("optimalSpendingParams")
     public OptimalSpendingInAustraliaParameters defaultOptimalSpendingParams() {
         return new OptimalSpendingInAustraliaParameters(700000, 0.02, 65);
+    }
+
+    @ModelAttribute("monteCarloParams")
+    public MonteCarloParameters defaultMonteCarloParams() {
+        return new MonteCarloParameters(1_000_000, 40_000, 30, 5000, 42L);
     }
 
     @GetMapping("/")
@@ -75,6 +82,18 @@ public class DashboardController {
         double result = retirementMathsService.calculateOptimalSpendingInAustralia(params);
         model.addAttribute("optimalSpendingResult", String.format("%.2f", result));
         model.addAttribute("activeTab", "spending");
+        return "dashboard/dashboard";
+    }
+    @PostMapping("/calculateMonteCarlo")
+    public String calculateMonteCarlo(@ModelAttribute("monteCarloParams") MonteCarloParameters params, Model model) {
+        MonteCarloResult result = retirementMathsService.simulateMonteCarloBootstrapAu(params);
+
+        model.addAttribute("mcRuinProbability", String.format("%.2f%%", result.ruinProbability() * 100.0));
+        model.addAttribute("mcP5", String.format("%.2f", result.endingBalanceP5()));
+        model.addAttribute("mcP50", String.format("%.2f", result.endingBalanceP50()));
+        model.addAttribute("mcP95", String.format("%.2f", result.endingBalanceP95()));
+        model.addAttribute("activeTab", "montecarlo");
+
         return "dashboard/dashboard";
     }
 }

@@ -18,7 +18,23 @@ The core logic is contained in the `Drawdown` class, which implements the follow
         *   *Formula:* $\mu(x) = \alpha + \beta e^{\eta x}$
     *   **Regional Mortality Support:** Includes preset parameters for US and Australian mortality data (ALT) to refine optimal spending calculations based on localized longevity.
 
-    *Key: $r$ = Real rate of return, $i$ = Inflation, $W$ = Starting balance, $c$ = Initial withdrawal, $\rho$ = Subjective discount rate, $\lambda$ = Hazard (mortality) rate, $x$ = Age.*
+*Key: $r$ = Real rate of return, $i$ = Inflation, $W$ = Starting balance, $c$ = Initial withdrawal, $\rho$ = Subjective discount rate, $\lambda$ = Hazard (mortality) rate, $x$ = Age.*
+
+### Monte Carlo Simulation (Bootstrap AU Returns + Inflation)
+
+In addition to the deterministic formulas above, the project includes a **Monte Carlo drawdown simulation** that models uncertainty in:
+
+- **Nominal returns** (sampled from historical AU observations)
+- **Inflation** (sampled from the same historical year as returns)
+- **Withdrawals** that **grow with inflation** each year
+
+**Method:** A yearly **bootstrap** simulation is used. For each simulated year, the engine randomly samples a historical `(nominal_return, inflation)` pair **with replacement** from:
+
+- `src/main/resources/data/au_return_inflation.csv`
+
+**Outputs:** Probability of ruin and ending-balance percentiles (P5 / P50 / P95).
+
+---
 
 ## Documentation & Examples
 
@@ -29,6 +45,7 @@ For detailed mathematical walkthroughs and worked examples of the core functions
 *   [Calculating Initial Withdrawal](src/documentation/CalculateInitalWithdrawal.md)
 *   [Yaari Optimal Spending (Australian Mortality)](src/documentation/CalculateYaariSpendingAustralianMortality.md)
 *   [Subjective Discount Rate Defined](src/documentation/SubjectDiscountRateDefined.md)
+*   [Monte Carlo Simulation (Worked Example)](src/documentation/MonteCarloSimulationWorkedExample.md)
 
 ## References
 
