@@ -54,13 +54,13 @@ For year (t), define:
 ### 3.1 Apply return and withdrawal
 
 \[
-B_{t+1} = B_t \cdot (1 + R_t) - W_t
+B_{t+1} = B_t * (1 + R_t) - W_t
 \]
 
 ### 3.2 Increase next year’s withdrawal by inflation
 
 \[
-W_{t+1} = W_t \cdot (1 + I_t)
+W_{t+1} = W_t * (1 + I_t)
 \]
 
 ### 3.3 Ruin rule
