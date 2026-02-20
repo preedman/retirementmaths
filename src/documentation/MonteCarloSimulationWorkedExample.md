@@ -53,15 +53,19 @@ For year (t), define:
 
 ### 3.1 Apply return and withdrawal
 
-B_{t+1} = B_t * (1 + R_t) - W_t
+\[
+B_{t+1} = B_t \cdot (1 + R_t) - W_t
+\]
 
 ### 3.2 Increase next year’s withdrawal by inflation
 
-W_{t+1} = W_t * (1 + I_t)
+\[
+W_{t+1} = W_t \cdot (1 + I_t)
+\]
 
 ### 3.3 Ruin rule
 
-If `B_{t+1} <= 0`, the portfolio is **ruined**:
+If (B_{t+1} le 0), the portfolio is **ruined**:
 
 - The balance is floored to 0
 - The trial ends early (no more years simulated for that trial)
@@ -98,13 +102,17 @@ Start:
 - \(B_1 = 100,000\)
 - \(W_1 = 5,000\)
 
-Apply return and withdrawal
+Apply return and withdraw:
 
-B_2 = 100,000 * 1.10 - 5,000 = 110,000 - 5,000 = 105,000
+\[
+B_2 = 100,000 \cdot 1.10 - 5,000 = 110,000 - 5,000 = 105,000
+\]
 
 Update withdrawal using inflation:
 
-W_2 = 5,000 * 1.02 = 5,100
+[
+W_2 = 5,000 cdot 1.02 = 5,100
+]
 
 ---
 
@@ -117,11 +125,15 @@ Start:
 
 Apply return and withdraw:
 
-B_3 = 105,000 * 0.80 - 5,100 = 84,000 - 5,100 = 78,900
+\[
+B_3 = 105,000 \cdot 0.80 - 5,100 = 84,000 - 5,100 = 78,900
+\]
 
 Update withdrawal using inflation:
 
-W_3 = 5,100 * 1.05 = 5,355
+\[
+W_3 = 5,100 \cdot 1.05 = 5,355
+\]
 
 ---
 
@@ -129,13 +141,14 @@ W_3 = 5,100 * 1.05 = 5,355
 
 Start:
 
-(B_3 = 78,900\)
-
-(W_3 = 5,355\)
+-\(B_3 = 78,900\)
+- \(W_3 = 5,355\)
 
 Apply return and withdraw:
 
-B_4 = 78,900 * 1.08 - 5,355 = 85,212 - 5,355 = 79,857
+\[
+B_4 = 78,900 \cdot 1.08 - 5,355 = 85,212 - 5,355 = 79,857
+\]
 
 **End of trial results:**
 
@@ -161,11 +174,25 @@ That’s one Monte Carlo trial.
 - **Years**
   Number of years to simulate per trial
 - **Trials**
-  Number of Monte Carlo trials to run (higher is smoother, slower)
+  Number of independent simulated retirement paths to run (sometimes mistyped as “trails”).
+
+  Why it matters:
+
+  - **Reduces randomness / noise in results:** Outputs like **Probability of Ruin** and ending-balance percentiles (P5/P50/P95) are estimated from the simulated trials. More trials generally makes these estimates **more stable** from run to run.
+  - **Improves precision:** Ruin probability is computed as `ruinedTrials / totalTrials`. With more trials, each single trial has less impact on the final percentage.
+  - **Costs more time:** Runtime is roughly proportional to `years × trials`. Doubling trials will usually take about twice as long.
+
+  Practical guidance:
+
+  - **Quick check:** 200–1,000 trials (fast, noisier)
+  - **Typical use:** 2,000–10,000 trials (good stability vs speed)
+  - **High confidence:** 20,000+ trials (slower, smoother results)
+
 - **Seed**
   Controls randomness (the starting value used to initialize the random number generator):
 
   - Same seed + same inputs + same dataset ⇒ **exactly the same results** (reproducible)
+  - Different seed ⇒ **exactly the same results** (reproducible)
   - Different seed ⇒ **usually different results** (different sampled years / different trial paths)
   - The seed **does not change the model math** or make results “more accurate” by itself—it only controls which random draws you get.
 
