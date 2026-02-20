@@ -202,7 +202,7 @@
             </c:if>
         </div>
 
-        <div class="tab-pane fade ${activeTab == 'settings' ? 'show active' : ''}" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+        <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
             <h4>Documentation</h4>
             <p>Worked examples of calculations and documentation</p>
             <a href="https://github.com/preedman/retirementmaths/blob/master/src/documentation/CalculateTimeForDrawdown.md" target="_blank">Calculate Time for Drawdown Example</a>
@@ -215,6 +215,11 @@
             <br>
             <a href="https://github.com/preedman/retirementmaths/blob/master/src/documentation/NominalReturnDefinition.md" target="_blank">Nominal Return Definition (60/40)</a>
             <br>
+            <a href="https://github.com/preedman/retirementmaths/blob/master/src/documentation/MonteCarloSimulationWorkedExample.md" target="_blank">Monte Carlo Simulation Worked Example</a>
+            <br>
+            <a href="https://github.com/preedman/retirementmaths/blob/master/src/main/resources/data/au_return_inflation.csv" target="_blank">AU Return + Inflation Dataset (CSV)</a>
+            <br>
+
         </div>
 
     </div>
