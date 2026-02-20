@@ -105,13 +105,13 @@ Start:
 Apply return and withdraw:
 
 \[
-B_2 = 100,000 \cdot 1.10 - 5,000 = 110,000 - 5,000 = 105,000
+B_2 = 100,000 * 1.10 - 5,000 = 110,000 - 5,000 = 105,000
 \]
 
 Update withdrawal using inflation:
 
 [
-W_2 = 5,000 cdot 1.02 = 5,100
+W_2 = 5,000 * 1.02 = 5,100
 ]
 
 ---
@@ -126,13 +126,13 @@ Start:
 Apply return and withdraw:
 
 \[
-B_3 = 105,000 \cdot 0.80 - 5,100 = 84,000 - 5,100 = 78,900
+B_3 = 105,000 * 0.80 - 5,100 = 84,000 - 5,100 = 78,900
 \]
 
 Update withdrawal using inflation:
 
 \[
-W_3 = 5,100 \cdot 1.05 = 5,355
+W_3 = 5,100 * 1.05 = 5,355
 \]
 
 ---
@@ -142,12 +142,13 @@ W_3 = 5,100 \cdot 1.05 = 5,355
 Start:
 
 -\(B_3 = 78,900\)
+
 - \(W_3 = 5,355\)
 
 Apply return and withdraw:
 
 \[
-B_4 = 78,900 \cdot 1.08 - 5,355 = 85,212 - 5,355 = 79,857
+B_4 = 78,900 * 1.08 - 5,355 = 85,212 - 5,355 = 79,857
 \]
 
 **End of trial results:**
@@ -187,7 +188,6 @@ That’s one Monte Carlo trial.
   - **Quick check:** 200–1,000 trials (fast, noisier)
   - **Typical use:** 2,000–10,000 trials (good stability vs speed)
   - **High confidence:** 20,000+ trials (slower, smoother results)
-
 - **Seed**
   Controls randomness (the starting value used to initialize the random number generator):
 
