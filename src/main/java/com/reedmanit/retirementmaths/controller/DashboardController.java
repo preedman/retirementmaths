@@ -44,12 +44,14 @@ public class DashboardController {
     }
 
     @GetMapping("/")
-    public String show() {
+    public String show(Model model) {
+        model.addAttribute("activeTab", "overview");
         return "dashboard/dashboard";
     }
 
     @GetMapping("/dashboard")
-    public String showDashboard() {
+    public String showDashboard(Model model) {
+        model.addAttribute("activeTab", "overview");
         return "dashboard/dashboard";
     }
 

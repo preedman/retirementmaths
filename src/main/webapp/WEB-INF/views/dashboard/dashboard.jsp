@@ -24,28 +24,36 @@
     <!-- Nav Tabs -->
     <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link ${empty activeTab || activeTab == 'overview' ? 'active' : ''}" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">Drawdown</button>
+            <button class="nav-link ${activeTab == 'overview' ? 'active' : ''}"
+                    id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview"
+                    type="button" role="tab">Drawdown</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link ${empty activeTab || activeTab == 'spending' ? 'active' : ''}" id="spending-tab" data-bs-toggle="tab" data-bs-target="#spending" type="button" role="tab">Spending</button>
-            <!--
-            <button class="nav-link" id="investments-tab" data-bs-toggle="tab" data-bs-target="#investments" type="button" role="tab" aria-controls="investments" aria-selected="false">Investments</button>
-            -->
+            <button class="nav-link ${activeTab == 'spending' ? 'active' : ''}"
+                    id="spending-tab" data-bs-toggle="tab" data-bs-target="#spending"
+                    type="button" role="tab">Spending</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link ${activeTab == 'starting-balance' ? 'active' : ''}" id="starting-balance-tab" data-bs-toggle="tab" data-bs-target="#starting-balance" type="button" role="tab">Starting Balance</button>
+            <button class="nav-link ${activeTab == 'starting-balance' ? 'active' : ''}"
+                    id="starting-balance-tab" data-bs-toggle="tab" data-bs-target="#starting-balance"
+                    type="button" role="tab">Starting Balance</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link ${activeTab == 'montecarlo' ? 'active' : ''}" id="montecarlo-tab" data-bs-toggle="tab" data-bs-target="#montecarlo" type="button" role="tab">Monte Carlo</button>
+            <button class="nav-link ${activeTab == 'montecarlo' ? 'active' : ''}"
+                    id="montecarlo-tab" data-bs-toggle="tab" data-bs-target="#montecarlo"
+                    type="button" role="tab">Monte Carlo</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Documentation</button>
+            <button class="nav-link ${activeTab == 'settings' ? 'active' : ''}"
+                    id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings"
+                    type="button" role="tab">Documentation</button>
         </li>
     </ul>
 
     <!-- Tab Content -->
     <div class="tab-content p-4 border border-top-0" id="dashboardTabsContent">
-        <div class="tab-pane fade ${empty activeTab || activeTab == 'overview' ? 'show active' : ''}" id="overview" role="tabpanel">
+
+        <div class="tab-pane fade ${activeTab == 'overview' ? 'show active' : ''}" id="overview" role="tabpanel">
             <h4>Drawdown Time Calculator</h4>
             <p>Calculate how long your retirement savings will last.</p>
 
@@ -194,7 +202,7 @@
             </c:if>
         </div>
 
-        <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+        <div class="tab-pane fade ${activeTab == 'settings' ? 'show active' : ''}" id="settings" role="tabpanel" aria-labelledby="settings-tab">
             <h4>Documentation</h4>
             <p>Worked examples of calculations and documentation</p>
             <a href="https://github.com/preedman/retirementmaths/blob/master/src/documentation/CalculateTimeForDrawdown.md" target="_blank">Calculate Time for Drawdown Example</a>
@@ -207,8 +215,8 @@
             <br>
             <a href="https://github.com/preedman/retirementmaths/blob/master/src/documentation/NominalReturnDefinition.md" target="_blank">Nominal Return Definition (60/40)</a>
             <br>
-
         </div>
+
     </div>
 </div>
 

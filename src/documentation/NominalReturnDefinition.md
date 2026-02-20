@@ -31,13 +31,13 @@ Let the target weights be:
 Then the portfolio nominal return for year \(t\) is:
 
 \[
-R^{port}_t = w_{eq}\cdot R^{eq}_t + w_{gov}\cdot R^{gov}_t
+R^{port}_t = w_{eq} * R^{eq}_t + w_{gov} * R^{gov}_t
 \]
 
 i.e.
 
 \[
-R^{port}_t = 0.60 \cdot R^{eq}_t + 0.40 \cdot R^{gov}_t
+R^{port}_t = 0.60 * R^{eq}_t + 0.40 * R^{gov}_t
 \]
 
 This is equivalent to an **annual rebalance** back to 60/40.
@@ -54,7 +54,7 @@ Assume for year \(t\):
 Compute:
 
 \[
-R^{port}_t = 0.60\cdot 0.10 + 0.40\cdot 0.04
+R^{port}_t = 0.60 * 0.10 + 0.40 * 0.04
 = 0.06 + 0.016
 = 0.076
 \]
