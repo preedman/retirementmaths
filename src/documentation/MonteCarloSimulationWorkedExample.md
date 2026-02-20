@@ -53,11 +53,11 @@ For year (t), define:
 
 ### 3.1 Apply return and withdrawal
 
-text B_{t+1} = B_t * (1 + R_t) - W_t
+B_{t+1} = B_t * (1 + R_t) - W_t
 
 ### 3.2 Increase next year’s withdrawal by inflation
 
-text W_{t+1} = W_t * (1 + I_t)
+W_{t+1} = W_t * (1 + I_t)
 
 ### 3.3 Ruin rule
 
@@ -100,11 +100,11 @@ Start:
 
 Apply return and withdrawal
 
-text B_2 = 100,000 * 1.10 - 5,000 = 110,000 - 5,000 = 105,000
+B_2 = 100,000 * 1.10 - 5,000 = 110,000 - 5,000 = 105,000
 
 Update withdrawal using inflation:
 
-text W_2 = 5,000 * 1.02 = 5,100
+W_2 = 5,000 * 1.02 = 5,100
 
 ---
 
@@ -117,11 +117,11 @@ Start:
 
 Apply return and withdraw:
 
-text B_3 = 105,000 * 0.80 - 5,100 = 84,000 - 5,100 = 78,900
+B_3 = 105,000 * 0.80 - 5,100 = 84,000 - 5,100 = 78,900
 
 Update withdrawal using inflation:
 
-text W_3 = 5,100 * 1.05 = 5,355
+W_3 = 5,100 * 1.05 = 5,355
 
 ---
 
@@ -129,13 +129,13 @@ text W_3 = 5,100 * 1.05 = 5,355
 
 Start:
 
--\(B_3 = 78,900\)
+(B_3 = 78,900\)
 
-- \(W_3 = 5,355\)
+(W_3 = 5,355\)
 
 Apply return and withdraw:
 
-text B_4 = 78,900 * 1.08 - 5,355 = 85,212 - 5,355 = 79,857
+B_4 = 78,900 * 1.08 - 5,355 = 85,212 - 5,355 = 79,857
 
 **End of trial results:**
 
