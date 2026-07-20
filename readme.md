@@ -50,6 +50,13 @@ For detailed mathematical walkthroughs and worked examples of the core functions
 *   [Monte Carlo Simulation (Worked Example)](src/documentation/MonteCarloSimulationWorkedExample.md)
 *   [Nominal Return Definition (60/40)](src/documentation/NominalReturnDefinition.md)
 
+### Screenshots
+
+*   [Drawdown Calculator Screenshot](src/documentation/drawdowncalculator.md)
+*   [Calculate Optimal Spending Screenshot](src/documentation/calculateoptimalspending.md)
+*   [Monte Carlo Simulation Screenshot](src/documentation/montecarlo.md)
+*   [Starting Balance Screenshot](src/documentation/startingbalance.md)
+
 
 The mathematical logic and formulas implemented in this project are based on the concepts found in:
 *   [The 7 Most Important Equations for Your Retirement](https://www.wiley.com/en-us/The+7+Most+Important+Equations+for+Your+Retirement%3A+The+Fascinating+People+and+Ideas+Behind+Planning+Your+Retirement+Income-p-9781118291535) by Moshe A. Milevsky.
